@@ -87,3 +87,22 @@ function test() {
   });
 }
 test();
+
+async function getJokes() {
+  let joke = "";
+  const apiUrl = "https://sv443.net/jokeapi/v2/joke/Programming?lang=de&blacklistFlags=nsfw,religious,political,racist,sexist";
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+    if (data.setup) {
+      joke = `${data.setup} ... ${data.delivery}`;
+    } else {
+      joke = data.joke;
+    }
+    console.log(joke);
+  } catch (error) {
+    console.log("oops", error);
+  }
+}
+
+getJokes();
