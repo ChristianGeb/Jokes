@@ -74,10 +74,10 @@ const button = document.getElementById("button");
 const audioElement = document.getElementById("audio");
 
 
-function test() {
+function tellMe(joke) {
   VoiceRSS.speech({
     key: '15ce78a794de4574a603f743eb71e100',
-    src: 'Hello, world!',
+    src: 'joke',
     hl: 'en-us',
     v: 'Linda',
     r: 0,
@@ -86,7 +86,6 @@ function test() {
     ssml: false
   });
 }
-test();
 
 async function getJokes() {
   let joke = "";
@@ -99,7 +98,7 @@ async function getJokes() {
     } else {
       joke = data.joke;
     }
-    console.log(joke);
+    tellMe(joke);
   } catch (error) {
     console.log("oops", error);
   }
