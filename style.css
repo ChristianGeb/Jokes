@@ -19,7 +19,7 @@ body {
   background: url('./robot.gif');
   background-size: contain;
   background-position: left center;
-  backgroundrep: no-repeat;
+  background-repeat: no-repeat;
 }
 
 button {

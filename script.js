@@ -73,12 +73,15 @@ const VoiceRSS = {
 const button = document.getElementById("button");
 const audioElement = document.getElementById("audio");
 
+function toggleButton() {
+  button.disabled = !button.disabled;
+}
 
 function tellMe(joke) {
   VoiceRSS.speech({
     key: '15ce78a794de4574a603f743eb71e100',
-    src: 'joke',
-    hl: 'en-us',
+    src: joke,
+    hl: 'de-de',
     v: 'Linda',
     r: 0,
     c: 'mp3',
@@ -99,9 +102,11 @@ async function getJokes() {
       joke = data.joke;
     }
     tellMe(joke);
+    toggleButton();
   } catch (error) {
     console.log("oops", error);
   }
 }
 
-getJokes();
+button.addEventListener("click", getJokes);
+audioElement.addEventListener("ended", toggleButton);
